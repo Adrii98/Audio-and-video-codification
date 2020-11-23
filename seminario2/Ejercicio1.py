@@ -17,7 +17,6 @@ def yuvhistogram():#This function compute the yuv histogram of the cutted video
 def resizevideo():#This function resize the video to a given resolution
     scale = input(
         "Write the resolution at which you want to resize the video. It has to be 720p,480p, 360x240 or 160x120. Write it in this format (height:weight): ")
-
     os.system("ffmpeg -i bbb_cut.mp4 -vf scale=" + scale + " output_resized.mp4")
 
 
