@@ -12,7 +12,7 @@ def transform():#Compute the video in different codecs
 def createvideo():#Mosaic
     os.system('ffmpeg -i VP8_output.webm -i VP9_output.webm -i h265_output.mp4 -i AV1_output.mkv -filter_complex "nullsrc=size=640x480 [base]; [0:v] setpts=PTS-STARTPTS, scale=320x240 [upperleft]; [1:v] setpts=PTS-STARTPTS, scale=320x240 [upperright]; [2:v] setpts=PTS-STARTPTS, scale=320x240 [lowerleft]; [3:v] setpts=PTS-STARTPTS, scale=320x240 [lowerright]; [base][upperleft] overlay=shortest=1 [tmp1]; [tmp1][upperright] overlay=shortest=1:x=320 [tmp2]; [tmp2][lowerleft] overlay=shortest=1:y=240 [tmp3]; [tmp3][lowerright] overlay=shortest=1:x=320:y=240" -c:v libx264 output.mkv')
 
-def stream(ip):#Stream
+def stream():#Stream
     ip = input("Write the ip where you want to transmit in the next format(127.0.0.0:port):")
     os.system("ffmpeg -i alfredo_halloween.mp4 -v 0 -vcodec mpeg4 -f mpegts udp://" + ip)
 
